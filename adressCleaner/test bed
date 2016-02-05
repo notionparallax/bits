@@ -1,0 +1,20 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+import pandas as pd
+import time
+import re
+import math
+
+def ignoreDickCell(cellValue):
+    if type(cellValue) == float:
+        if math.isnan(cellValue):
+            return ""
+    else:
+        return cellValue
+
+
+companies = pd.read_csv('VisionClientVendorExports_20150630_update.csv')
+
+companies.irow(0)["GoogleAddress"] = 'test google address'
+print companies.irow(0)
